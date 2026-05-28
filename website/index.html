@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CREATIVA IA</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f7f7f5;color:#0A0A0A;overflow-x:hidden}
+header{padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;border-bottom:1px solid #ddd}
+.logo-wrap img{height:62px;display:block}
+nav{display:flex;gap:15px;flex-wrap:wrap;justify-content:flex-end}
+nav a{text-decoration:none;color:black;font-weight:bold;font-size:13px}
+.hero{padding:110px 40px;text-align:center;position:relative}
+.hero:before{content:"";position:absolute;width:700px;height:700px;background:radial-gradient(circle,#2F435320 0%,transparent 70%);left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1}
+.hero-logo{width:min(520px,85%);margin:0 auto 45px;display:block;filter:drop-shadow(0 15px 40px rgba(0,0,0,.12))}
+.hero h1{font-size:72px;max-width:1050px;margin:auto;line-height:.95;letter-spacing:-3px}
+.hero p{max-width:850px;margin:35px auto;font-size:22px;line-height:1.8;color:#555}
+.btn{display:inline-block;padding:18px 35px;background:#2F4353;color:white;border-radius:14px;text-decoration:none;font-weight:bold;margin-top:15px}
+.section{padding:85px 40px;max-width:1200px;margin:auto}
+.section h2{font-size:48px;margin-bottom:20px}
+.section-intro{font-size:20px;line-height:1.7;color:#555;max-width:850px;margin-bottom:45px}
+.services-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.service-link{background:white;padding:28px;border-radius:22px;text-decoration:none;color:black;box-shadow:0 10px 30px rgba(0,0,0,.06);transition:.25s}
+.service-link:hover{transform:translateY(-5px)}
+.service-link h3{margin-bottom:10px;color:#2F4353}
+.service-section{padding:90px 40px}
+.service-section:nth-child(even){background:white}
+.service-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:45px}
+.service-info{position:sticky;top:100px;height:fit-content}
+.service-tag{display:inline-block;background:#2F4353;color:white;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:bold;margin-bottom:18px}
+.service-info h2{font-size:44px;margin-bottom:20px;line-height:1.05}
+.service-info p{font-size:18px;line-height:1.8;color:#555;margin-bottom:25px}
+.includes{background:#f7f7f5;padding:25px;border-radius:20px}
+.includes ul{list-style:none;display:grid;gap:12px;margin-top:14px}
+.includes li:before{content:"✓";color:#2F4353;font-weight:bold;margin-right:10px}
+.examples-area{background:#0A0A0A;padding:30px;border-radius:28px;color:white;overflow:hidden}
+.examples-area h3{font-size:28px;margin-bottom:12px}
+.examples-area p{color:#bbb;line-height:1.7;margin-bottom:22px}
+.example-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.example-card{background:#171717;border-radius:22px;overflow:hidden;border:1px solid #2a2a2a}
+.example-placeholder{aspect-ratio:9/16;background:linear-gradient(135deg,#222,#111);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#aaa;font-weight:bold}
+.media-vertical{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:black}
+.media-horizontal{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:black}
+.example-content{padding:18px}
+.example-content h4{margin-bottom:10px}
+.view-link{display:inline-block;margin-top:14px;padding:10px 14px;background:#2F4353;color:white;text-decoration:none;border-radius:12px;font-size:13px;font-weight:bold}
+.realestate-carousel-wrap{overflow:hidden;position:relative;padding-bottom:10px}
+.realestate-carousel-track{display:flex;gap:24px;width:max-content;animation:scrollCarousel 32s linear infinite}
+.realestate-carousel-wrap:hover .realestate-carousel-track{animation-play-state:paused}
+.realestate-card{width:440px;flex:0 0 440px;background:#171717;border-radius:22px;overflow:hidden;border:1px solid #2a2a2a;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+@keyframes scrollCarousel{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;margin-top:35px}
+.price{background:white;padding:35px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.price h3{margin-bottom:20px}
+.price strong{font-size:34px;color:#2F4353}
+footer{background:#2F4353;color:white;padding:80px 40px;text-align:center}
+.footer-logo{width:180px;margin:0 auto 24px;display:block}
+footer p{margin-top:12px;font-size:18px}
+@media(max-width:900px){header{flex-direction:column;gap:18px}nav{justify-content:center}.hero h1{font-size:46px}.hero p{font-size:18px}.service-container{grid-template-columns:1fr}.service-info{position:static}.realestate-card{width:320px;flex-basis:320px}.hero-logo{width:340px}}
+@media(max-width:520px){header,.hero,.section,.service-section,footer{padding-left:22px;padding-right:22px}.hero h1{font-size:38px}.hero-logo{width:250px}.logo-wrap img{height:50px}nav a{font-size:12px}.realestate-card{width:280px;flex-basis:280px}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo-wrap"><img src="https://res.cloudinary.com/dcdfsfjha/image/upload/v1779053565/ChatGPT_Image_17_may_2026_05_32_20_p.m._gtbd1y.png" alt="CREATIVA IA"></div>
+<nav>
+<a href="#servicios">Servicios</a>
+<a href="#ugc">UGC IA</a>
+<a href="#inmobiliario">Inmobiliario</a>
+<a href="#ads">Meta Ads</a>
+<a href="#producto">Producto</a>
+<a href="#avatares">Avatares</a>
+<a href="#redes">Redes</a>
+<a href="#guiones">Guiones</a>
+<a href="#moda">Moda</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</header>
+
+<section class="hero">
+<img class="hero-logo" src="https://res.cloudinary.com/dcdfsfjha/image/upload/v1779053565/ChatGPT_Image_17_may_2026_05_32_20_p.m._gtbd1y.png" alt="CREATIVA IA">
+<h1>Creamos contenido con IA que hace que tu marca parezca gigante.</h1>
+<p>Videos, anuncios, avatares y contenido visual creado con inteligencia artificial para negocios modernos que quieren vender más y verse profesionales.</p>
+<a class="btn" href="#contacto">Solicitar propuesta</a>
+</section>
+
+<section class="section" id="servicios">
+<h2>Servicios</h2>
+<p class="section-intro">Volvimos a incluir todos los servicios principales de CREATIVA IA. Cada servicio tiene su propia sección y espacio para agregar ejemplos.</p>
+<div class="services-menu">
+<a class="service-link" href="#ugc"><h3>UGC con Avatares IA</h3><p>Videos tipo influencer creados con IA.</p></a>
+<a class="service-link" href="#inmobiliario"><h3>Videos Inmobiliarios</h3><p>Tours y videos premium para propiedades.</p></a>
+<a class="service-link" href="#ads"><h3>Anuncios Meta Ads</h3><p>Creatividades para Facebook e Instagram.</p></a>
+<a class="service-link" href="#producto"><h3>Fotos de Producto</h3><p>Imágenes comerciales para ecommerce.</p></a>
+<a class="service-link" href="#avatares"><h3>Avatares / Influencers Virtuales</h3><p>Personajes digitales para marcas.</p></a>
+<a class="service-link" href="#redes"><h3>Contenido para Redes</h3><p>Posts, reels y carruseles premium.</p></a>
+<a class="service-link" href="#guiones"><h3>Guiones y Videos Cortos</h3><p>Reels y TikToks diseñados para atención.</p></a>
+<a class="service-link" href="#moda"><h3>Moda / Streetwear</h3><p>Contenido urbano para ropa y sneakers.</p></a>
+</div>
+</section>
+
+<section class="service-section" id="ugc"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 01</span><h2>UGC con Avatares de IA</h2><p>Creamos videos tipo influencer usando avatares hiperrealistas para promocionar productos, servicios y marcas sin necesidad de grabaciones reales.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Guion comercial</li><li>Avatar hiperrealista</li><li>Voz IA</li><li>Edición vertical</li><li>Subtítulos dinámicos</li></ul></div></div><div class="examples-area"><h3>Ejemplos UGC IA</h3><p>Aquí colocaremos videos UGC con avatares IA.</p><div class="example-grid"><div class="example-card"><div class="example-placeholder">Espacio para ejemplo 1</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame un link y lo agrego aquí.</p></div></div><div class="example-card"><div class="example-placeholder">Espacio para ejemplo 2</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Imagen, video o enlace externo.</p></div></div></div></div></div></section>
+
+<section class="service-section" id="inmobiliario"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 02</span><h2>Videos Inmobiliarios con IA</h2><p>Transformamos propiedades en videos cinematográficos listos para redes sociales y anuncios inmobiliarios.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Video en formato 16:9</li><li>Guion comercial</li><li>Edición cinematográfica</li><li>Música premium</li><li>Animaciones de texto</li></ul></div></div><div class="examples-area"><h3>Ejemplos Inmobiliarios</h3><p>Carrusel horizontal automático. Haz click para abrir cualquier video en grande.</p><div class="realestate-carousel-wrap"><div class="realestate-carousel-track">
+<div class="realestate-card"><a href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779052828/Video_inmobilaria_2_brturg.mp4" target="_blank"><video class="media-horizontal" src="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779052828/Video_inmobilaria_2_brturg.mp4" controls muted playsinline></video></a><div class="example-content"><h4>Video Inmobiliario IA</h4><p>Ejemplo cinematográfico para real estate.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779052828/Video_inmobilaria_2_brturg.mp4" target="_blank">Ver video</a></div></div>
+<div class="realestate-card"><a href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053686/pikaso-combined-video-2026-05-04_1_ewtyj2.mp4" target="_blank"><video class="media-horizontal" src="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053686/pikaso-combined-video-2026-05-04_1_ewtyj2.mp4" controls muted playsinline></video></a><div class="example-content"><h4>Luxury Property</h4><p>Tour premium de propiedad moderna.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053686/pikaso-combined-video-2026-05-04_1_ewtyj2.mp4" target="_blank">Ver video</a></div></div>
+<div class="realestate-card"><a href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053698/pikaso-vi%CC%81deo-combinado-2026-05-07_nmulty.mp4" target="_blank"><video class="media-horizontal" src="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053698/pikaso-vi%CC%81deo-combinado-2026-05-07_nmulty.mp4" controls muted playsinline></video></a><div class="example-content"><h4>Real Estate Showcase</h4><p>Contenido inmobiliario cinematográfico.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053698/pikaso-vi%CC%81deo-combinado-2026-05-07_nmulty.mp4" target="_blank">Ver video</a></div></div>
+<div class="realestate-card"><a href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779052828/Video_inmobilaria_2_brturg.mp4" target="_blank"><video class="media-horizontal" src="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779052828/Video_inmobilaria_2_brturg.mp4" controls muted playsinline></video></a><div class="example-content"><h4>Video Inmobiliario IA</h4><p>Ejemplo cinematográfico para real estate.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779052828/Video_inmobilaria_2_brturg.mp4" target="_blank">Ver video</a></div></div>
+<div class="realestate-card"><a href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053686/pikaso-combined-video-2026-05-04_1_ewtyj2.mp4" target="_blank"><video class="media-horizontal" src="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053686/pikaso-combined-video-2026-05-04_1_ewtyj2.mp4" controls muted playsinline></video></a><div class="example-content"><h4>Luxury Property</h4><p>Tour premium de propiedad moderna.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053686/pikaso-combined-video-2026-05-04_1_ewtyj2.mp4" target="_blank">Ver video</a></div></div>
+<div class="realestate-card"><a href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053698/pikaso-vi%CC%81deo-combinado-2026-05-07_nmulty.mp4" target="_blank"><video class="media-horizontal" src="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053698/pikaso-vi%CC%81deo-combinado-2026-05-07_nmulty.mp4" controls muted playsinline></video></a><div class="example-content"><h4>Real Estate Showcase</h4><p>Contenido inmobiliario cinematográfico.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/video/upload/v1779053698/pikaso-vi%CC%81deo-combinado-2026-05-07_nmulty.mp4" target="_blank">Ver video</a></div></div>
+</div></div></div></div></section>
+
+<section class="service-section" id="ads"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 03</span><h2>Anuncios para Meta Ads</h2><p>Diseñamos anuncios visuales y copys optimizados para Facebook e Instagram con enfoque en conversión.</p><div class="includes"><h3>Qué incluye</h3><ul><li>3 creatividades</li><li>Copywriting</li><li>Hook inicial</li><li>Formatos para Facebook</li><li>Formatos para Instagram</li></ul></div></div><div class="examples-area"><h3>Ejemplos Meta Ads</h3><p>Aquí colocaremos anuncios, creatividades y campañas.</p><div class="example-grid"><div class="example-card"><div class="example-placeholder">Espacio para anuncio 1</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame un link y lo agrego aquí.</p></div></div><div class="example-card"><div class="example-placeholder">Espacio para anuncio 2</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Imagen, video o enlace externo.</p></div></div></div></div></div></section>
+
+<section class="service-section" id="producto"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 04</span><h2>Fotos de Producto con IA</h2><p>Creamos imágenes de producto hiperrealistas para ecommerce, redes sociales y campañas publicitarias.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Imágenes premium</li><li>Fondos publicitarios</li><li>Retoque profesional</li><li>Formatos para ecommerce</li><li>Estética comercial</li></ul></div></div><div class="examples-area"><h3>Ejemplos de Producto</h3><p>Aquí mostraremos fotos IA de productos, ecommerce y campañas.</p><div class="example-grid"><div class="example-card"><div class="example-placeholder">Espacio para producto 1</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame un link y lo agrego aquí.</p></div></div><div class="example-card"><div class="example-placeholder">Espacio para producto 2</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Imagen, video o enlace externo.</p></div></div></div></div></div></section>
+
+<section class="service-section" id="avatares"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 05</span><h2>Creación de Avatares / Influencers Virtuales</h2><p>Diseñamos identidades digitales completas para marcas personales y empresas.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Diseño del personaje</li><li>Personalidad</li><li>Fotos IA</li><li>Estilo visual</li><li>Branding</li></ul></div></div><div class="examples-area"><h3>Ejemplos de Avatares</h3><p>Aquí colocaremos personajes digitales, influencers virtuales y ejemplos de identidad IA.</p><div class="example-grid"><div class="example-card"><div class="example-placeholder">Espacio para avatar 1</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame un link y lo agrego aquí.</p></div></div><div class="example-card"><div class="example-placeholder">Espacio para avatar 2</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Imagen, video o enlace externo.</p></div></div></div></div></div></section>
+
+<section class="service-section" id="redes"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 06</span><h2>Contenido para Redes</h2><p>Posts, reels y carruseles listos para publicar con estética moderna y estrategia visual.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Posts para redes</li><li>Reels verticales</li><li>Diseño gráfico</li><li>Copies</li><li>Calendario de contenido</li></ul></div></div><div class="examples-area"><h3>Ejemplos de Contenido para Redes</h3><p>Imagen vertical 9:16. Haz click para verla en grande.</p><div class="example-grid"><div class="example-card"><a href="https://res.cloudinary.com/dcdfsfjha/image/upload/v1778556282/xaym5ca94nd7dkbb8eaw.png" target="_blank"><img class="media-vertical" src="https://res.cloudinary.com/dcdfsfjha/image/upload/v1778556282/xaym5ca94nd7dkbb8eaw.png" alt="Contenido para redes"></a><div class="example-content"><h4>Contenido para Redes</h4><p>Ejemplo visual moderno para Instagram y marcas premium.</p><a class="view-link" href="https://res.cloudinary.com/dcdfsfjha/image/upload/v1778556282/xaym5ca94nd7dkbb8eaw.png" target="_blank">Ver imagen</a></div></div><div class="example-card"><div class="example-placeholder">Espacio para próximo ejemplo</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame otro link y lo agrego aquí.</p></div></div></div></div></div></section>
+
+<section class="service-section" id="guiones"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 07</span><h2>Guiones y Videos Cortos</h2><p>Guiones virales y videos de 15 segundos optimizados para TikTok e Instagram Reels.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Hooks virales</li><li>Guiones cortos</li><li>Edición vertical</li><li>Subtítulos dinámicos</li><li>Estructura para retención</li></ul></div></div><div class="examples-area"><h3>Ejemplos de Videos Cortos</h3><p>Aquí colocaremos reels, TikToks y ejemplos de guiones visuales.</p><div class="example-grid"><div class="example-card"><div class="example-placeholder">Espacio para reel corto</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame un link y lo agrego aquí.</p></div></div><div class="example-card"><div class="example-placeholder">Espacio para TikTok</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Imagen, video o enlace externo.</p></div></div></div></div></div></section>
+
+<section class="service-section" id="moda"><div class="service-container"><div class="service-info"><span class="service-tag">Servicio 08</span><h2>Videos de Moda / Streetwear</h2><p>Contenido urbano premium para marcas de ropa, sneakers y accesorios.</p><div class="includes"><h3>Qué incluye</h3><ul><li>Video estético urbano</li><li>Modelos IA</li><li>Transiciones premium</li><li>Música trendy</li><li>Estilo streetwear</li></ul></div></div><div class="examples-area"><h3>Ejemplos Moda / Streetwear</h3><p>Aquí colocaremos videos, campañas visuales y ejemplos para marcas de ropa.</p><div class="example-grid"><div class="example-card"><div class="example-placeholder">Espacio para moda 1</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Envíame un link y lo agrego aquí.</p></div></div><div class="example-card"><div class="example-placeholder">Espacio para moda 2</div><div class="example-content"><h4>Ejemplo pendiente</h4><p>Imagen, video o enlace externo.</p></div></div></div></div></div></section>
+
+<section class="section" id="precios">
+<h2>Precios Iniciales</h2>
+<div class="prices">
+<div class="price"><h3>3 anuncios Meta Ads</h3><strong>$149</strong></div>
+<div class="price"><h3>10 fotos IA</h3><strong>$99</strong></div>
+<div class="price"><h3>UGC con IA</h3><strong>$199</strong></div>
+<div class="price"><h3>Video inmobiliario</h3><strong>$249</strong></div>
+</div>
+</section>
+
+<footer id="contacto">
+<img class="footer-logo" src="https://res.cloudinary.com/dcdfsfjha/image/upload/v1779053565/ChatGPT_Image_17_may_2026_05_32_20_p.m._gtbd1y.png" alt="CREATIVA IA">
+<p>WhatsApp: 8767688987</p>
+<p>Instagram: @creativaia</p>
+<p>Correo: jainierrojas@gmail.com</p>
+</footer>
+
+</body>
+</html>
